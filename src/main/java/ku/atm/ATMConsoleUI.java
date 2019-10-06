@@ -8,7 +8,7 @@ import java.util.Scanner;
    A text-based simulation of an automatic teller machine.
  */
 public class ATMConsoleUI {
-	public void start() {
+	public void start(){
 		ATM theATM;
         Bank theBank = new Bank();
 		//readCustomers("customers.txt", theBank);
@@ -35,7 +35,11 @@ public class ATMConsoleUI {
 				if (command.equalsIgnoreCase("A")) {
 					System.out.print("Amount: ");
 					double amount = in.nextDouble();
-					theATM.deposit(amount);
+					try {
+						theATM.deposit(amount);
+					} catch (NotEnoughBalanceException e) {
+						System.out.print(e.getMessage());
+					}
 				}
 				else if (command.equalsIgnoreCase("B")) {
 					System.out.print("Amount: ");
