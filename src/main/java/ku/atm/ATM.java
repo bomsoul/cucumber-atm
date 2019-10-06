@@ -71,7 +71,7 @@ public class ATM {
       (Precondition: state is TRANSACT)
       @param value the amount to deposit
 	 */
-	public void deposit(double value) {
+	public void deposit(double value) throws NotEnoughBalanceException{
         if (state == TRANSACT) {
             currentAccount.deposit(value);
         }
